@@ -25,3 +25,4 @@ s.update(set(df['Unnamed: 2']))
 set_to_tv(s, today_ + '_VCP.txt')
 
 #TEST
+#TEST 2
