@@ -21,7 +21,7 @@ s = set()
 
 print(df['Unnamed: 2'].shape)
 s.update(set(df['Unnamed: 2']))
-print(len(s))
+# print(len(s))
 set_to_tv(s, today_ + '_VCP.txt')
 
 
