@@ -1,13 +1,13 @@
 from libs import *
 from helper_functions import *
 
-today = datetime.datetime.today().strftime('%Y/%m/%d')
+today = datetime.today().strftime('%Y/%m/%d')
 
-os.chdir('/Users/yash/Desktop/Trading/VCP/watchlists/'+today)
+os.chdir(vcp_wl / today)
 
 df = pd.read_excel('VCP.xlsx')
 
-today_ = datetime.datetime.today().strftime('%Y%m%d')
+today_ = datetime.today().strftime('%Y%m%d')
 
 s = set()
 
