@@ -3,6 +3,7 @@
 
 from libs import *
 from helper_functions import *
+from paths import *
 
 fcustom = Custom()
 
@@ -14,7 +15,7 @@ today = datetime.today().strftime('%Y%m%d')
 
 today_ = datetime.today().strftime('%Y/%m/%d')
 
-path_ = "/Users/yash/Desktop/Trading/Q/watchlists/"+today_
+path_ = q_wl / today_
 if not os.path.isdir(path_):
     os.mkdir(path_)
 os.chdir(path_)

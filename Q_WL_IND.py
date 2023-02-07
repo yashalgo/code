@@ -1,10 +1,11 @@
 from libs import *
 from helper_functions import *
+from paths import *
 
 today = datetime.today().strftime('%Y/%m/%d')
 today2 = datetime.today().strftime('%Y%m%d')
 
-os.chdir('/Users/yash/Desktop/Trading/Q/watchlists/'+today)
+os.chdir(q_wl  / today)
 
 #1-3-6 m gainers
 

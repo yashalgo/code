@@ -4,6 +4,7 @@
 # #Creates backwatchlist set for watchlists from last friday to most recent thursday => watchlists for all trading days for last trading week
 from libs import *
 from helper_functions import *
+from paths import *
 
 today = date.today() - timedelta(days=70)
 latest_monday = today + timedelta(days=-today.weekday())
@@ -17,7 +18,7 @@ for i in range(5):
     ds = d.strftime('%Y%m%d')
     dateset.add(ds)
 
-os.chdir('/Users/yash/Desktop/Trading/Q/watchlists')
+os.chdir(q_wl)
 
 files = glob('**/*US.txt', recursive = True)
 
@@ -33,7 +34,7 @@ for f in files:
         ticker_set.update(set(data))
 print(len(ticker_set))
 
-os.chdir('/Users/yash/Desktop/Trading/Q/backwatchlists/')
+os.chdir(q_bwl)
 
 outfile = latest_monday.strftime('%Y%m%d') + '_' + datetime.today().strftime('%Y%m%d') + '_BWL_US.txt'
 set_to_tv(ticker_set, outfile)

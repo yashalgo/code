@@ -1,5 +1,5 @@
 from libs import *
-
+from paths import *
 
 def instrument_token(data, symbol):
     """
@@ -78,7 +78,7 @@ def tv_str_to_list(s):
     x.remove('Symbol')
     return x
 
-def read_file_from_symbol(symbol, basedir = '/Users/yash/Desktop/Trading/kite connect/historical_data/day'):
+def read_file_from_symbol(symbol, basedir = str(day_)):
     file = glob(basedir+'/*'+symbol+'*')[0]
     print(file)
     df = pd.read_csv(file)
@@ -91,7 +91,7 @@ def txt_to_str(fname):
         data = file.read().replace('\n', '')
     return data
 
-def read_file_from_symbol(symbol, basedir = '/Users/yash/Desktop/Trading/kite connect/historical_data/day'):
+def read_file_from_symbol(symbol, basedir = str(day_)):
     file = glob(basedir+'/*'+symbol+'*')[0]
     print(file)
     df = pd.read_csv(file)
@@ -99,7 +99,7 @@ def read_file_from_symbol(symbol, basedir = '/Users/yash/Desktop/Trading/kite co
     df.drop(['Unnamed: 0', 'date'],inplace=True, axis=1)
     return df
 
-def read_file_from_symbol2(symbol, basedir = '/Users/yash/Desktop/Trading/kite connect/historical_data/day'):
+def read_file_from_symbol2(symbol, basedir = str(day_)):
     file = glob(basedir+'/'+symbol+'.csv')[0]
     print(file)
     df=pd.read_csv(file)[['Date','Open','High','Low','Close','Volume']]
@@ -108,7 +108,7 @@ def read_file_from_symbol2(symbol, basedir = '/Users/yash/Desktop/Trading/kite c
     # df.drop(['Unnamed: 0'],inplace=True, axis=1)
     return df
 
-def read_file_from_symbol3(symbol, basedir = '/Users/yash/Desktop/Trading/kite connect/historical_data/day'):
+def read_file_from_symbol3(symbol, basedir = str(day_)):
     file = glob(basedir+'/*'+symbol+'*')[0]
     print(file)
     df = pd.read_csv(file)
@@ -144,14 +144,12 @@ def check_vols(df):
     if max(df.volume) <= 0:
         return False    
     return True
-def vwap(df):
-    q = df.volume.values
-    p = df.close.values
-    return df.assign(vwap=(p * q).cumsum() / q.cumsum())
+
 def typical_vwap(df):
     q = df.volume.values
     p = df.tp.values
     return df.assign(typical_vwap=(p * q).cumsum() / q.cumsum())
+
 def save_plot(group, imgname):
     fig = go.Figure(data=[
                         go.Candlestick(
@@ -182,14 +180,14 @@ def set_to_tv(s, outfile):
         text_file.write(tv_string)
     print(outfile)
 
-def set_to_tv2(s, outfile = today + '_1_3_6_M_chartink.txt'):
+def set_to_tv2(s, outfile = datetime.today().strftime('%Y%m%d') + '_1_3_6_M_chartink.txt'):
     s = {x.replace("&","_").replace("-","_") for x in s}
     tv_string = ','.join(list(s))
     with open(outfile, "w") as text_file:
         text_file.write(tv_string)
     print(outfile)
 
-def set_to_tv_US(s, outfile = today + '_US.txt', exchange = 'NASDAQ'):
+def set_to_tv_US(s, outfile = datetime.today().strftime('%Y%m%d') + '_US.txt', exchange = 'NASDAQ'):
 #     s = {exchange + ":" + x.replace("&","_").replace("-","_") for x in s}
     s = {x.replace("&","_").replace("-","_") for x in s}
 
@@ -199,7 +197,6 @@ def set_to_tv_US(s, outfile = today + '_US.txt', exchange = 'NASDAQ'):
     print(outfile)
 
 def to_tv(infile):
-    
     df = pd.read_csv(infile)
     df['tv_ticker'] = df['Security Name'].apply(lambda x: "NSE:" + x.replace("&","_").replace("-","_"))
     tv_string = ','.join(list(df['tv_ticker']))
