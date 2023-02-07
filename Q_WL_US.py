@@ -85,9 +85,11 @@ vol3 = 'Month - Over 5%'
 perf6 = 'Half +100%'
 vol6 = 'Month - Over 5%'
 
+#Price
+price = 'Any'
 cols = [0,1,2,3,4,6,43,44,45,51,52,53,63,65,68]
 
-filters_dict1 = {'Market Cap.': '+Micro (over $50mln)','Performance': perf1, 'Price': 'Over $1',
+filters_dict1 = {'Market Cap.': '+Micro (over $50mln)','Performance': perf1, 'Price': price,
                 'Volatility': vol1, 'Average Volume': 'Over 100K'}
 
 filters_dict3 = filters_dict1.copy()
