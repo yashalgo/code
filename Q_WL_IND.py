@@ -1,16 +1,8 @@
-from datetime import datetime
-import pandas as pd
-import os
+from libs import *
+from helper_functions import *
 
 today = datetime.today().strftime('%Y/%m/%d')
 today2 = datetime.today().strftime('%Y%m%d')
-
-def set_to_tv(s, outfile = today2 + '_Q_IND.txt', exchange = 'NSE'):
-    s = {exchange + ":" + x.replace("&","_").replace("-","_") for x in s}
-    tv_string = ','.join(list(s))
-    with open(outfile, "w") as text_file:
-        text_file.write(tv_string)
-    print(outfile)
 
 os.chdir('/Users/yash/Desktop/Trading/Q/watchlists/'+today)
 

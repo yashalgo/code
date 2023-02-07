@@ -1,16 +1,4 @@
-from kiteconnect import KiteConnect
-import undetected_chromedriver as uc
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.common.by import By
-import time
-import pyotp
-import sys
-import subprocess
-import pkg_resources
-import pandas as pd
-from glob import glob
-import datetime
-import plotly.graph_objects as go
+from libs import *
 
 
 def instrument_token(data, symbol):
@@ -190,6 +178,32 @@ def save_plot(group, imgname):
 def set_to_tv(s, outfile):
     s = {x.replace("&","_").replace("-","_") for x in s}
     tv_string = ','.join(list(s))
+    with open(outfile, "w") as text_file:
+        text_file.write(tv_string)
+    print(outfile)
+
+def set_to_tv2(s, outfile = today + '_1_3_6_M_chartink.txt'):
+    s = {x.replace("&","_").replace("-","_") for x in s}
+    tv_string = ','.join(list(s))
+    with open(outfile, "w") as text_file:
+        text_file.write(tv_string)
+    print(outfile)
+
+def set_to_tv_US(s, outfile = today + '_US.txt', exchange = 'NASDAQ'):
+#     s = {exchange + ":" + x.replace("&","_").replace("-","_") for x in s}
+    s = {x.replace("&","_").replace("-","_") for x in s}
+
+    tv_string = ','.join(list(s))
+    with open(outfile, "w") as text_file:
+        text_file.write(tv_string)
+    print(outfile)
+
+def to_tv(infile):
+    
+    df = pd.read_csv(infile)
+    df['tv_ticker'] = df['Security Name'].apply(lambda x: "NSE:" + x.replace("&","_").replace("-","_"))
+    tv_string = ','.join(list(df['tv_ticker']))
+    outfile = infile.replace('.csv','_tv.txt')
     with open(outfile, "w") as text_file:
         text_file.write(tv_string)
     print(outfile)
