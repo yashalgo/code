@@ -33,7 +33,7 @@ perf3 = 'Quarter +50%'
 vol3 = 'Month - Over 5%'
 
 #6-month performance
-perf6 = 'Half +100%'
+perf6 = 'Half +50%'
 vol6 = 'Month - Over 5%'
 
 #Price
