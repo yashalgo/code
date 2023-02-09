@@ -1,85 +1,150 @@
 from libs import *
-from helper_functions import *
 from paths import *
+from helper_functions import *
+from pandas_datareader import data as pdr
+from yahoo_fin import stock_info as si
+import yfinance as yf
 
-fcustom = Custom()
+yf.pdr_override()
 
-today = datetime.today().strftime('%Y%m%d')
-today_ = datetime.today().strftime('%Y/%m/%d')
+today_ = datetime.today().strftime("%Y/%m/%d")
 path_ = q_wl / today_
-
 if not os.path.isdir(path_):
     os.mkdir(path_)
 os.chdir(path_)
 
-files = glob('**/*_US.txt', recursive = True)
-print(files)
-
-outfile_ = today + '_US.txt'
-if outfile_ in files:
-    print('File already present. Aborting!')
+outfile_ = datetime.today().strftime("%Y%m%d") + "_Q_US.txt"
+if outfile_ in glob("*US.txt"):
+    print("File already present. Aborting!")
     exit()
 
+fcustom = Custom()
+cols = [0, 1, 2, 3, 4, 6, 43, 44, 45, 51, 52, 53, 63, 65, 68]
 
-limit = 100
-# ------FILTERS------
-
-#1-month performance
-perf1 = 'Month +50%'
-vol1 = 'Month - Over 5%'
-
-#3-month performance
-perf3 = 'Quarter +50%'
-vol3 = 'Month - Over 5%'
-
-#6-month performance
-perf6 = 'Half +50%'
-vol6 = 'Month - Over 5%'
-
-#Price
-price = 'Any'
-
-cols = [0,1,2,3,4,6,43,44,45,51,52,53,63,65,68]
-
-filters_dict1 = {'Market Cap.': '+Micro (over $50mln)','Performance': perf1, 'Price': price,
-                'Volatility': vol1, 'Average Volume': 'Over 100K'}
-
-filters_dict3 = filters_dict1.copy()
-filters_dict3['Performance'] = perf3
-filters_dict3['Volatility'] = vol3
-
-filters_dict6 = filters_dict1.copy()
-filters_dict6['Performance'] = perf6
-filters_dict6['Volatility'] = vol6
-
-# --------------1 MONTH GAINERS-------------
+vol1 = "Month - Over 5%"
+filters_dict1 = {"Market Cap.": "+Micro (over $50mln)", "Volatility": vol1}
 fcustom.set_filter(filters_dict=filters_dict1)
-df1 = fcustom.screener_view(columns=cols, sleep_sec = 1, order= 'Performance (Month)', ascend=False)
-print(df1.shape[0])
-df1 = df1.head(limit)
-print(df1.shape[0])
+df1 = fcustom.screener_view(
+    columns=cols, sleep_sec=1, order="Performance (Month)", ascend=False
+)
 
-# --------------3 MONTH GAINERS-------------
-fcustom.set_filter(filters_dict=filters_dict3)
-df3 = fcustom.screener_view(columns=cols, sleep_sec = 1,  order='Performance (Quarter)', ascend=False)
-print(df3.shape[0])
-df3 = df3.head(limit)
-print(df3.shape[0])
+end_date = date.today()
+start_date = end_date - timedelta(days=250)
 
-# --------------6 MONTH GAINERS-------------
-fcustom.set_filter(filters_dict=filters_dict6)
-df6 = fcustom.screener_view(columns=cols, sleep_sec = 1,  order='Performance (Half Year)', ascend=False)
-print(df6.shape[0])
-df6 = df6.head(limit)
-print(df6.shape[0])
+if not os.path.isdir("temp"):
+    os.mkdir("temp")
+os.chdir("temp")
 
-# --------------MERGE-------------
-df_final = pd.concat([df1, df3, df6], axis=0)
-df_final = df_final.drop_duplicates(subset=['Ticker'], keep='first')
+# IF CSV FILES PRESENT
 
-print(df_final.shape[0])
+# files = glob('*.csv')
+# ticker_df = pd.DataFrame(columns=['Ticker', '1m', '3m', '6m', 'DV', 'ADR%'])
 
-s = set(df_final['Ticker'])
+# for f in files:
+#     df = pd.read_csv(f)
+#     ticker = f.split('.')[0]
+#     for i in [6]:
+#         n_month_gain(df, i)
+#     # print(ticker)
+#     ticker_df.loc[len(ticker_df.index)] = [ticker, df['1M_low_gain'].iloc[-1], df['3M_low_gain'].iloc[-1], df['6M_low_gain'].iloc[-1],  df['DollarVolume'].iloc[-1], df['ADR%'].iloc[-1]]
+#     df.to_csv(ticker + '.csv')
 
-set_to_tv_US(s)
+tickers = df1["Ticker"]
+request_times = []
+errors = 0
+ticker_df = pd.DataFrame(columns=["Ticker", "1m", "3m", "6m", "DV", "ADR%"])
 
+start_time = time.time()
+for ticker in tickers:
+    try:
+        # Download historical data as CSV for each stock (makes the process faster)
+        while (
+            len(request_times) >= 2000 and (time.time() - request_times[-2000]) < 3600
+        ):
+            time.sleep(1)
+
+        df = yf.download(ticker, period="6mo")
+        request_times.append(time.time())
+
+        # pre-processing
+        df.rename(columns=str.lower, inplace=True)
+        df.drop("close", axis=1, inplace=True)
+        df.rename(columns={"adj close": "close"}, inplace=True)
+        adr(df)
+        df["DollarVolume"] = df["close"] * df["volume"]
+
+        # n-month gains
+        for i in [1, 3, 6]:
+            n_month_gain(df, i)
+        # print(ticker_df)
+        ticker_df.loc[len(ticker_df.index)] = [
+            ticker,
+            df["1M_low_gain"].iloc[-1],
+            df["3M_low_gain"].iloc[-1],
+            df["6M_low_gain"].iloc[-1],
+            df["DollarVolume"].iloc[-1],
+            df["ADR%"].iloc[-1],
+        ]
+        print(ticker, df.shape)
+        df.to_csv(ticker + ".csv")
+    except:
+        print("Error for ticker: ", ticker)
+        errors += 1
+print("Time taken: {}".format(time.time() - start_time))
+
+ticker_df = pd.merge(ticker_df, df1, on="Ticker")
+ticker_df = ticker_df[
+    [
+        "Ticker",
+        "1m",
+        "3m",
+        "6m",
+        "DV",
+        "ADR%",
+        "Company",
+        "Sector",
+        "Industry",
+        "Market Cap",
+        "Price",
+        "Earnings",
+    ]
+]
+
+# PARAMETERS
+mil = 10**6
+adr_filter = 5.0
+dv_filter = 1 * mil
+limit = 50
+
+# FILTER
+ticker_df_filt = ticker_df[
+    (ticker_df["ADR%"] >= adr_filter) & (ticker_df["DV"] >= dv_filter)
+]
+
+# RANK
+ticker_df_filt["1m_Rating"] = ticker_df_filt["1m"].rank(ascending=False)
+ticker_df_filt["3m_Rating"] = ticker_df_filt["3m"].rank(ascending=False)
+ticker_df_filt["6m_Rating"] = ticker_df_filt["6m"].rank(ascending=False)
+
+ticker_df_1m = ticker_df_filt[ticker_df_filt["1m_Rating"] <= limit]
+ticker_df_3m = ticker_df_filt[ticker_df_filt["3m_Rating"] <= limit]
+ticker_df_6m = ticker_df_filt[ticker_df_filt["6m_Rating"] <= limit]
+
+ticker_df_final = pd.concat([ticker_df_1m, ticker_df_3m, ticker_df_6m], axis=0)
+ticker_df_final = ticker_df_final.drop_duplicates(subset=["Ticker"], keep="first")
+
+os.chdir(q_wl / today_)
+
+s1 = set(ticker_df_1m["Ticker"])
+set_to_tv(s1, datetime.today().strftime("%Y%m%d") + "_1_M_Q_US.txt")
+s3 = set(ticker_df_3m["Ticker"])
+set_to_tv(s3, datetime.today().strftime("%Y%m%d") + "_3_M_Q_US.txt")
+s6 = set(ticker_df_6m["Ticker"])
+set_to_tv(s6, datetime.today().strftime("%Y%m%d") + "_6_M_Q_US.txt")
+
+s = set(ticker_df_final["Ticker"])
+set_to_tv(s, outfile_)
+
+ticker_df_final.to_csv("INFO.csv")
+
+shutil.rmtree("temp")
