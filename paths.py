@@ -10,6 +10,7 @@ minute_ = data_ / "kite_connect/minute"
 minute_5 = data_ / "kite_connect/minute_5"
 day_ = data_ / "kite_connect/day"
 minute_nifty500 = data_ / "kite_connect/nifty_500"
+daily_us = data_ / "US/daily"
 
 # TV
 tv_wl = trading_ / "tradingview_watchlists"
