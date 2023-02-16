@@ -162,7 +162,7 @@ def n_month_gain(df, n):
     # print(df.head())
     col_name2 = col_name + "_gain"
     df[col_name2] = (df["close"] / df[col_name] - 1) * 100
-    df.drop(col_name, inplace=True)
+    df.drop(col_name, inplace=True, axis=1)
     return df
 
 

@@ -8,13 +8,28 @@ import yfinance as yf
 
 yf.pdr_override()
 
+
+# %%
+def get_yf_df(df2):
+    df2.rename(columns=str.lower, inplace=True)
+    df2.drop("close", axis=1, inplace=True)
+    df2.rename(columns={"adj close": "close"}, inplace=True)
+    df2.reset_index(inplace=True)
+    return df2
+
+
 # %%
 # SCREENER
 fcustom = Custom()
 cols = [0, 1, 2, 3, 4, 6, 43, 44, 45, 51, 52, 53, 63, 65, 68]
 
-vol1 = "Month - Over 5%"
-filters_dict1 = {"Market Cap.": "+Micro (over $50mln)", "Volatility": vol1}
+# %%
+
+vol1 = "Month - Over 3%"
+perf1 = "Month +10%"
+mcap = "+Micro (over $50mln)"
+filters_dict1 = {"Market Cap.": mcap, "Volatility": vol1, "Performance": perf1}
+
 fcustom.set_filter(filters_dict=filters_dict1)
 df1 = fcustom.screener_view(
     columns=cols, sleep_sec=1, order="Performance (Month)", ascend=False
@@ -23,22 +38,27 @@ print(df1.shape[0])
 
 # %%
 end_date = datetime.today()
-
-# %%
 today_ = end_date.strftime("%Y/%m/%d")
-
-# %%
 path_ = q_wl / today_
 if not os.path.isdir(path_):
     os.mkdir(path_)
 os.chdir(path_)
-# if not os.path.isdir('temp'):
-#     os.mkdir('temp')
-# os.chdir('temp')
+
+# %%
+# df1 = pd.read_csv('US_STOCKS.csv')
+
+# %%
+df1.to_csv("US_STOCKS.csv")
 
 # %%
 os.chdir(daily_us)
 files = glob("*.csv")
+
+# %%
+for f in files:
+    if today_.replace("/", "") not in f:
+        # print('Deleting: ', f)
+        os.remove(f)
 
 # %%
 tickers = df1["Ticker"]
@@ -46,63 +66,30 @@ request_times = []
 errors = 0
 ticker_df = pd.DataFrame(columns=["Ticker", "1m", "3m", "6m", "DV", "ADR%"])
 
-
-# %%
-def get_yf_df(df2):
-    df2.rename(columns=str.lower, inplace=True)
-    df2.drop("close", axis=1, inplace=True)
-    df2.rename(columns={"adj close": "close"}, inplace=True)
-    return df2
-
-
 # %%
 start_time = time.time()
 for ticker in tickers:
     try:
-        # Download historical data as CSV for each stock (makes the process faster)
-        outfile = ticker + ".csv"
+        outfile = ticker + "_" + today_.replace("/", "") + ".csv"
         if outfile in files:
             print("Ticker present: ", ticker)
             df = pd.read_csv(outfile)
-            df["Date"] = df["Date"].apply(
-                lambda x: datetime.strptime(x.split(" ")[0], "%Y-%m-%d")
-            )
-            while (
-                len(request_times) >= 2000
-                and (time.time() - request_times[-2000]) < 3600
-            ):
-                time.sleep(1)
-            df2 = yf.download(ticker, start=df["Date"].iloc[-1], end=end_date)
-            request_times.append(time.time())
-            df2 = get_yf_df(df2)
-            df2.reset_index(level=0, inplace=True)
-            df2["Date"] = df2["Date"].apply(
-                lambda x: datetime.strptime(
-                    datetime.strftime(x, "%Y-%m-%d"), "%Y-%m-%d"
-                )
-            )
-            df = pd.concat([df, df2], axis=0)
         else:
-            print("Ticker not present: ", ticker)
+            # API LIMIT
             while (
                 len(request_times) >= 2000
                 and (time.time() - request_times[-2000]) < 3600
             ):
                 time.sleep(1)
-            df = yf.download(ticker, period="6mo")
+            df = yf.download(ticker, period="6mo", progress=False)
             request_times.append(time.time())
             df = get_yf_df(df)
+            # ADD TAs
+            df["DollarVolume"] = df["close"] * df["volume"]
+            adr(df)
+            for i in [1, 3, 6]:
+                n_month_gain(df, i)
 
-        df["DollarVolume"] = df["close"] * df["volume"]
-        df.drop_duplicates(subset="Date", inplace=True, keep="first")
-        df.reset_index(inplace=True)
-        df.drop("index", axis=1, inplace=True)
-        df = df[-128:]
-        # n-month gains
-        adr(df)
-        for i in [1, 3, 6]:
-            n_month_gain(df, i)
-            # print(ticker_df)
         ticker_df.loc[len(ticker_df.index)] = [
             ticker,
             df["1M_low_gain"].iloc[-1],
@@ -111,7 +98,6 @@ for ticker in tickers:
             df["DollarVolume"].iloc[-1],
             df["ADR%"].iloc[-1],
         ]
-        # print(ticker, df.shape)
         df.to_csv(outfile)
     except:
         print("Error for ticker: ", ticker)
@@ -142,7 +128,7 @@ ticker_df = ticker_df[
 mil = 10**6
 adr_filter = 5.0
 dv_filter = 1 * mil
-limit = 100
+limit = 50
 
 # %%
 # FILTER
@@ -181,6 +167,3 @@ set_to_tv(s, datetime.today().strftime("%Y%m%d") + "_Q_US.txt")
 
 # %%
 ticker_df_final.to_csv("INFO.csv")
-
-# %%
-# shutil.rmtree('temp')
