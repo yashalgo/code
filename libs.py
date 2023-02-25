@@ -6,10 +6,6 @@ from glob import glob
 from pydrive.auth import GoogleAuth
 from pydrive.drive import GoogleDrive
 from pathlib import Path
-from kiteconnect import KiteConnect, KiteTicker, exceptions
-import undetected_chromedriver as uc
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.common.by import By
 import time
 import pyotp
 import sys
