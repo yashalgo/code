@@ -1,18 +1,21 @@
+# %%
 #!/usr/bin/env python
 # coding: utf-8
 
 # #Creates backwatchlist set for watchlists from last friday to most recent thursday => watchlists for all trading days for last trading week
-from datetime import date, timedelta
+from datetime import date, timedelta, datetime
 import os
 from glob import glob
 from config import *
 import utils.tradingview as tv
 
+# %%
 today = date.today()
 latest_monday = today + timedelta(days=-today.weekday())
 
 print(today, latest_monday)
 
+# %%
 dateset = set()
 
 for i in range(5):
@@ -22,6 +25,7 @@ for i in range(5):
 
 os.chdir(q_wl)
 
+# %%
 files = glob("**/*US.txt", recursive=True)
 
 ticker_set = set()
@@ -36,6 +40,7 @@ for f in files:
         ticker_set.update(set(data))
 print(len(ticker_set))
 
+# %%
 os.chdir(q_bwl)
 
 outfile = (

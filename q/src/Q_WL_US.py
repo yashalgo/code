@@ -4,14 +4,18 @@ import os
 from glob import glob
 from config import *
 import pandas as pd
-import time
 import utils.tradingview as tv
+import utils.technical_indicators as ti
+
 from finvizfinance.screener.custom import Custom
 from pandas_datareader import data as pdr
 from yahoo_fin import stock_info as si
 import yfinance as yf
+import sys
+import time
 
 yf.pdr_override()
+pd.options.mode.chained_assignment = None  # default='warn'
 
 
 # %%
@@ -24,12 +28,27 @@ def get_yf_df(df2):
 
 
 # %%
+end_date = datetime.today()
+today_ = end_date.strftime("%Y/%m/%d")
+path_ = q_wl / today_
+if not os.path.isdir(path_):
+    os.mkdir(path_)
+os.chdir(path_)
+
+# %%
+final_outfile = datetime.today().strftime("%Y%m%d") + "_Q_US.txt"
+
+# %%
+if final_outfile in glob("*US*"):
+    print("File already exists")
+    exit()
+
+# %%
 # SCREENER
 fcustom = Custom()
 cols = [0, 1, 2, 3, 4, 6, 43, 44, 45, 51, 52, 53, 63, 65, 68]
 
 # %%
-
 vol1 = "Month - Over 3%"
 perf1 = "Month +10%"
 mcap = "+Micro (over $50mln)"
@@ -40,14 +59,6 @@ df1 = fcustom.screener_view(
     columns=cols, sleep_sec=1, order="Performance (Month)", ascend=False
 )
 print(df1.shape[0])
-
-# %%
-end_date = datetime.today()
-today_ = end_date.strftime("%Y/%m/%d")
-path_ = q_wl / today_
-if not os.path.isdir(path_):
-    os.mkdir(path_)
-os.chdir(path_)
 
 # %%
 df1.to_csv("US_STOCKS.csv")
@@ -62,7 +73,7 @@ files = glob("*.csv")
 # %%
 for f in files:
     if today_.replace("/", "") not in f:
-        # print('Deleting: ', f)
+        print("Deleting: ", f)
         os.remove(f)
 
 # %%
@@ -74,39 +85,38 @@ ticker_df = pd.DataFrame(columns=["Ticker", "1m", "3m", "6m", "DV", "ADR%"])
 # %%
 start_time = time.time()
 for ticker in tickers:
-    try:
-        outfile = ticker + "_" + today_.replace("/", "") + ".csv"
-        if outfile in files:
-            print("Ticker present: ", ticker)
-            df = pd.read_csv(outfile)
-        else:
-            # API LIMIT
-            while (
-                len(request_times) >= 2000
-                and (time.time() - request_times[-2000]) < 3600
-            ):
-                time.sleep(1)
-            df = yf.download(ticker, period="6mo", progress=False)
-            request_times.append(time.time())
-            df = get_yf_df(df)
-            # ADD TAs
-            df["DollarVolume"] = df["close"] * df["volume"]
-            adr(df)
-            for i in [1, 3, 6]:
-                tv.n_month_gain(df, i)
+    # try:
+    outfile = ticker + "_" + today_.replace("/", "") + ".csv"
+    if outfile in files:
+        print("Ticker present: ", ticker)
+        df = pd.read_csv(outfile)
+    else:
+        # API LIMIT
+        while (
+            len(request_times) >= 2000 and (time.time() - request_times[-2000]) < 3600
+        ):
+            time.sleep(1)
+        df = yf.download(ticker, period="6mo", progress=False)
+        request_times.append(time.time())
+        df = get_yf_df(df)
+        # ADD TAs
+        df["DollarVolume"] = df["close"] * df["volume"]
+        ti.adr(df)
+        for i in [1, 3, 6]:
+            ti.n_month_gain(df, i)
 
-        ticker_df.loc[len(ticker_df.index)] = [
-            ticker,
-            df["1M_low_gain"].iloc[-1],
-            df["3M_low_gain"].iloc[-1],
-            df["6M_low_gain"].iloc[-1],
-            df["DollarVolume"].iloc[-1],
-            df["ADR%"].iloc[-1],
-        ]
-        df.to_csv(outfile)
-    except:
-        print("Error for ticker: ", ticker)
-        errors += 1
+    ticker_df.loc[len(ticker_df.index)] = [
+        ticker,
+        df["1M_low_gain"].iloc[-1],
+        df["3M_low_gain"].iloc[-1],
+        df["6M_low_gain"].iloc[-1],
+        df["DollarVolume"].iloc[-1],
+        df["ADR%"].iloc[-1],
+    ]
+    df.to_csv(outfile)
+    # except:
+    #     print('Error for ticker: ', ticker)
+    #     errors += 1
 print("Time taken: {}".format(time.time() - start_time))
 
 # %%
@@ -167,7 +177,7 @@ s6 = set(ticker_df_6m["Ticker"])
 tv.set_to_tv(s6, datetime.today().strftime("%Y%m%d") + "_6_M_Q_US.txt")
 
 s = set(ticker_df_final["Ticker"])
-tv.set_to_tv(s, datetime.today().strftime("%Y%m%d") + "_Q_US.txt")
+tv.set_to_tv(s, final_outfile)
 
 
 # %%

@@ -1,4 +1,2 @@
 #!/usr/bin/env zsh
-setopt aliases
-source ~/.zshrc
-qus
+python3 /Users/yash/Desktop/Trading/code/q/src/Q_WL_US.py

@@ -1,5 +1,3 @@
-#!/bin/bash
-shopt -s expand_aliases
-source ~/.zshrc
-cd /Users/yash/Desktop/Trading/code
-qbi
+#!/bin/zsh
+
+python3 /Users/yash/Desktop/Trading/code/q/src/Q_BWL_IND.py
