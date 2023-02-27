@@ -1,0 +1,9 @@
+
+# ignore all data files/folders
+
+**/__pycache__/
+**/stocks/
+**/tmp/
+**/ohlc/
+**/earnings/
+**/overviews/
