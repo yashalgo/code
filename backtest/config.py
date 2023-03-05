@@ -4,7 +4,7 @@ from pathlib import Path
 trading_ = Path("/Users/yash/Desktop/Trading")
 code_ = trading_ / "code"
 data_ = trading_ / "historical_data"
-misc_ = trading_ / "misc"
+
 # hist. data
 minute_ = data_ / "kite_connect/minute"
 minute_5 = data_ / "kite_connect/minute_5"
@@ -16,7 +16,6 @@ daily_us_20y = data_ / "US/20y"
 # TV
 tv_wl = trading_ / "tradingview_watchlists"
 nifty500_csv = tv_wl / "broad/ind_nifty500list.csv"
-fno_list = tv_wl / "fno.txt"
 nifty500_txt = tv_wl / " broad/NIFTY_500.txt"
 
 # Q
