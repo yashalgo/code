@@ -1,6 +1,7 @@
 import pkg_resources
 import subprocess
 import sys
+import yfinance as yf
 
 
 def install_package(required):
