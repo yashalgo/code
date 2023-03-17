@@ -1,7 +1,4 @@
 # %%
-# for mondays -> previous day does not provide earnings for Friday AMC
-
-# %%
 import pandas as pd
 from config import *
 import os
@@ -10,6 +7,7 @@ from finvizfinance.screener.custom import Custom
 import utils.tradingview as tv
 import utils.misc as msc
 import yfinance as yf
+from glob import glob
 
 
 # %%
@@ -83,20 +81,21 @@ df["Date"] = df["Date"].apply(
 df = df[df["Date"] < datetime.today()]
 
 # %%
-previous_day = datetime.strftime(df.iloc[-1, 0], "%b %d") + "/a"
-today_ = datetime.strftime(datetime.today(), "%b %d") + "/b"
+today_ = datetime.today()
+previous_day = df.iloc[-1, 0]
 
 # %%
-print(previous_day, today_)
+previous_day_str = datetime.strftime(previous_day, "%b %d") + "/a"
+today_str = datetime.strftime(today_, "%b %d") + "/b"
+
+# %%
+print(previous_day_str, today_str)
 
 # %%
 df_final = df_final[
     (df_final["DollarVolume"] >= 1e6)
-    & ((df_final["Earnings"] == previous_day) | (df_final["Earnings"] == today_))
+    & ((df_final["Earnings"] == previous_day_str) | (df_final["Earnings"] == today_str))
 ]
-
-# %%
-print(df_final.shape[0], "\n")
 
 # %%
 os.chdir(ep_wl)
@@ -106,4 +105,24 @@ s1 = set(df_final["Ticker"])
 # tv.set_to_tv(s1, datetime.today().strftime('%Y%m%d') + '_AMC.txt')
 
 # %%
-tv.set_to_tv(s1, datetime.today().strftime("%Y%m%d") + "_EP.txt")
+tv.set_to_tv(s1, datetime.today().strftime("%Y%m%d") + "_EP_UNFILTERED.txt")
+
+# %% [markdown]
+# ZACKS - Remove -ve surprises
+
+# %%
+# today_zr = today_.strftime('%Y-%m-%d')
+# previous_day_zr = previous_day.strftime('%Y-%m-%d')
+# today_file = glob(f'*{today_zr}*')[0]
+# previous_day_file = glob(f'*{previous_day_zr}*')[0]
+# data_today = pd.read_table(today_file)
+# data_previous_day = pd.read_table(previous_day_file)
+# df_final_zr = pd.concat([data_today, data_previous_day], axis=0)
+# df_final_zr.fillna(0, inplace=True)
+# df_final_zr['Surprise'] = df_final_zr['Surprise'].apply(lambda x: x if isinstance(x, (float, int)) else float(x.replace(',','')))
+# df_final_zr = df_final_zr[df_final_zr['Surprise']>=0.0]
+# stocks_zr = set(df_final_zr['Symbol'])
+# print(len(s1), len(stocks_zr))
+# final = s1.intersection(stocks_zr)
+# print(len(final))
+# tv.set_to_tv(final, datetime.today().strftime('%Y%m%d') + '_EP.txt')
