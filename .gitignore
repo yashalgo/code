@@ -1,7 +1,8 @@
 
 # ignore all data files/folders
 
-**/__pycache__/
+__pycache__/
+*.pyc
 **/stocks/
 **/tmp/
 **/ohlc/
