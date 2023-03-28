@@ -29,3 +29,9 @@ def n_month_gain(df, n):
     df[col_name2] = (df["close"] / df[col_name] - 1) * 100
     df.drop(col_name, inplace=True, axis=1)
     return df
+
+
+def add_ma(df, n):
+    col_name = "DMA" + str(n)
+    df[col_name] = df["close"].rolling(n).mean()
+    return df
