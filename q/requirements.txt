@@ -1,7 +1,0 @@
-finvizfinance==0.14.4
-pandas==1.5.2
-pandas_datareader==0.10.0
-setuptools==65.7.0
-utils==1.0.1
-yahoo_fin==0.8.9.1
-yfinance==0.2.9
