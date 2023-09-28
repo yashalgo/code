@@ -8,7 +8,7 @@ import yfinance as yf
 import time
 
 from ..common.config import *
-from ..common.tradingview import *
+from ..common.tv_utils import *
 from ..common.indicators import *
 from ..common.io import *
 
@@ -19,13 +19,10 @@ print(f"Starting program: {sys.argv[0]} at {datetime.now().time()}")
 yf.pdr_override()
 pd.options.mode.chained_assignment = None  # default='warn'
 
-if not os.path.isdir(today_wl):
-    os.mkdir(today_wl)
-os.chdir(today_wl)
-
+change_dir(today_wl)
 final_outfile = today_blank + "_Q_US.txt"
 
-if final_outfile in glob("*US*"):
+if check_file(final_outfile):
     print("File already exists")
     exit()
 
@@ -36,7 +33,8 @@ cols = [0, 1, 2, 3, 4, 6, 43, 44, 45, 51, 52, 53, 63, 65, 68]
 vol1 = "Month - Over 3%"
 perf1 = "Month Up"
 mcap = "+Micro (over $50mln)"
-price = "Over $1"
+# price = "Over $1"
+price = "Any"
 sma50 = "Price above SMA50"
 avgvol = "Over 100K"
 filters_dict1 = {
@@ -48,7 +46,10 @@ filters_dict1 = {
     "Average Volume": avgvol,
 }
 
-isFiltered = False
+default_arg1 = 0
+arg1 = sys.argv[1] if len(sys.argv) > 1 else default_arg1
+
+isFiltered = bool(arg1)
 if not isFiltered:
     fcustom.set_filter(filters_dict=filters_dict1)
     df1 = fcustom.screener_view(
@@ -179,12 +180,12 @@ ticker_df_final = ticker_df_final.drop_duplicates(subset=["Ticker"], keep="first
 os.chdir(today_wl)
 
 # %%
-s1 = set(ticker_df_1m["Ticker"])
-set_to_tv(s1, today_blank + "_1_M_Q_US.txt")
-s3 = set(ticker_df_3m["Ticker"])
-set_to_tv(s3, today_blank + "_3_M_Q_US.txt")
-s6 = set(ticker_df_6m["Ticker"])
-set_to_tv(s6, today_blank + "_6_M_Q_US.txt")
+# s1 = set(ticker_df_1m["Ticker"])
+# set_to_tv_us(s1, today_blank + "_1_M_Q_US.txt")
+# s3 = set(ticker_df_3m["Ticker"])
+# set_to_tv_us(s3, today_blank + "_3_M_Q_US.txt")
+# s6 = set(ticker_df_6m["Ticker"])
+# set_to_tv_us(s6, today_blank + "_6_M_Q_US.txt")
 
 s = set(ticker_df_final["Ticker"])
-set_to_tv(s, final_outfile)
+set_to_tv_us(s, final_outfile)

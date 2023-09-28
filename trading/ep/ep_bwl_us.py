@@ -1,10 +1,10 @@
 # #Creates backwatchlist set for watchlists from monday to friday => watchlists for all trading days for last trading week
 
-from datetime import date, timedelta, datetime
+from datetime import timedelta
 import os
 from glob import glob
 from ..common.config import *
-from ..common.tradingview import *
+from ..common.tv_utils import *
 
 latest_monday = today + timedelta(days=-today.weekday())
 latest_friday = latest_monday + timedelta(days=4)
@@ -44,4 +44,4 @@ latest_monday = latest_monday.strftime("%Y%m%d")
 latest_friday = latest_friday.strftime("%Y%m%d")
 outfile = f"{latest_monday}_{latest_friday}_EP_BWL_US.txt"
 
-set_to_tv(ticker_set, outfile)
+set_to_tv_us(ticker_set, outfile)

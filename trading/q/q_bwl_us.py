@@ -4,7 +4,7 @@ from datetime import date, timedelta, datetime
 import os
 from glob import glob
 from ..common.config import *
-from ..common.tradingview import *
+from ..common.tv_utils import *
 
 latest_monday = today + timedelta(days=-today.weekday())
 latest_friday = latest_monday + timedelta(days=4)
@@ -44,4 +44,4 @@ latest_monday = latest_monday.strftime("%Y%m%d")
 latest_friday = latest_friday.strftime("%Y%m%d")
 outfile = f"{latest_monday}_{latest_friday}_Q_BWL_US.txt"
 
-set_to_tv(ticker_set, outfile)
+set_to_tv_ind(ticker_set, outfile)

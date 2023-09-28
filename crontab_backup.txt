@@ -1,0 +1,53 @@
+#==================
+### US ###
+#==================
+
+# Q_WL
+10 10 * * 1-5 cd /Users/yash/Desktop/Trading/code/trading/q && ./q_wl_us.zsh >> /Users/yash/Desktop/Trading/out/cron.log 2>&1
+
+# Q_BWL
+01 09 * * 6 cd /Users/yash/Desktop/Trading/code/trading/q && ./q_bwl_us.zsh >> /Users/yash/Desktop/Trading/out/cron.log 2>&1
+
+#------------------
+
+# EP_WL
+01 10 * * 1-5 cd /Users/yash/Desktop/Trading/code/trading/ep && ./ep_wl_us.zsh >> /Users/yash/Desktop/Trading/out/cron.log 2>&1
+
+# EP_BWL
+05 09 * * 6 cd /Users/yash/Desktop/Trading/code/trading/ep && ./ep_bwl_us.zsh >> /Users/yash/Desktop/Trading/out/cron.log 2>&1
+
+#==================
+### IND ###
+#==================
+
+# Q_BWL
+10 09 * * 6 cd /Users/yash/Desktop/Trading/code/trading/q && ./q_bwl_ind.zsh >> /Users/yash/Desktop/Trading/out/cron.log 2>&1
+
+#------------------
+
+#EP_WL_D
+01 16 * * 1-5 cd /Users/yash/Desktop/Trading/code/trading/ep && ./ep_wl_ind_d.zsh >> /Users/yash/Desktop/Trading/out/cron.log 2>&1
+
+#EP_WL_W
+01 09 * * 0 cd /Users/yash/Desktop/Trading/code/trading/ep && ./ep_wl_ind_w.zsh >> /Users/yash/Desktop/Trading/out/cron.log 2>&1
+
+#------------------
+#HV_WL
+10 16 * * 1-5 cd /Users/yash/Desktop/Trading/code/trading/hv && ./hv_wl_ind.zsh >> /Users/yash/Desktop/Trading/out/cron.log 2>&1
+
+#------------------
+#MSI_RS_WL
+20 16 * * 1-5 cd /Users/yash/Desktop/Trading/code/trading/msi && ./rs_wl_ind.zsh >> /Users/yash/Desktop/Trading/out/cron.log 2>&1
+
+
+#------------------
+#TJI_MM
+30 16 * * 1-5 cd /Users/yash/Desktop/Trading/code/trading/tji && ./tji_mm.zsh >> /Users/yash/Desktop/Trading/out/cron.log 2>&1
+
+#------------------
+#MOM_WL
+40 16 * * 1-5 cd /Users/yash/Desktop/Trading/code/trading/mom && ./mom_wl_ind.zsh >> /Users/yash/Desktop/Trading/out/cron.log 2>&1
+
+#------------------
+#TWITTER_TJI_MM
+01 17 * * 1-5 cd /Users/yash/Desktop/Trading/code/trading/twitter && ./tji_tweet.zsh >> /Users/yash/Desktop/Trading/out/cron.log 2>&1

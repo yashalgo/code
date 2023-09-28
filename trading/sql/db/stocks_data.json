@@ -1,0 +1,6 @@
+{
+  "username": "postgres",
+  "password": "password",
+  "hostname": "localhost",
+  "database_name": "stocks_data"
+}

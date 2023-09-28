@@ -1,0 +1,233 @@
+2023-08-30 16:37:02,878 - INFO - Starting...
+2023-08-30 16:37:02,878 - ERROR - File not found: /Users/yash/Desktop/Trading/code/trading/msi/data/scrape/20230830_invalid_stocks.txt
+2023-08-30 16:37:03,500 - INFO - Total Stocks Combined: 3170
+2023-08-30 16:37:03,597 - INFO - Invalid Stocks: 0
+2023-08-30 16:37:03,597 - INFO - 0 - 0 = 0
+2023-08-30 16:37:03,957 - INFO - Remaining Stocks to Scrape: 3170
+2023-08-30 16:38:11,103 - INFO - Processed 50 stocks. Time Elapsed: 68.2 seconds
+2023-08-30 16:38:42,651 - INFO - Starting...
+2023-08-30 16:38:42,668 - INFO - Total Stocks Combined: 3170
+2023-08-30 16:38:42,757 - INFO - Invalid Stocks: 1
+2023-08-30 16:38:42,757 - INFO - 0 - 0 = 0
+2023-08-30 16:38:42,883 - INFO - Remaining Stocks to Scrape: 3170
+2023-08-30 16:39:48,411 - INFO - Processed 50 stocks. Time Elapsed: 65.8 seconds
+2023-08-30 16:40:50,800 - INFO - Processed 100 stocks. Time Elapsed: 128.1 seconds
+2023-08-30 16:41:54,303 - INFO - Processed 150 stocks. Time Elapsed: 191.7 seconds
+2023-08-30 16:42:44,585 - INFO - Processed 200 stocks. Time Elapsed: 241.9 seconds
+2023-08-30 16:43:43,459 - INFO - Processed 250 stocks. Time Elapsed: 300.8 seconds
+2023-08-30 16:44:34,691 - INFO - Processed 300 stocks. Time Elapsed: 352.0 seconds
+2023-08-30 16:45:34,329 - INFO - Processed 350 stocks. Time Elapsed: 411.7 seconds
+2023-08-30 16:46:36,112 - INFO - Processed 400 stocks. Time Elapsed: 473.5 seconds
+2023-08-30 16:47:42,709 - INFO - Processed 450 stocks. Time Elapsed: 540.1 seconds
+2023-08-30 16:48:48,826 - INFO - Processed 500 stocks. Time Elapsed: 606.2 seconds
+2023-08-30 16:49:53,309 - INFO - Processed 550 stocks. Time Elapsed: 670.7 seconds
+2023-08-30 16:50:47,201 - INFO - Processed 600 stocks. Time Elapsed: 724.5 seconds
+2023-08-30 16:51:39,539 - INFO - Processed 650 stocks. Time Elapsed: 776.9 seconds
+2023-08-30 16:52:43,879 - INFO - Processed 700 stocks. Time Elapsed: 841.2 seconds
+2023-08-30 16:53:56,309 - INFO - Processed 750 stocks. Time Elapsed: 913.7 seconds
+2023-08-30 16:54:58,403 - INFO - Processed 800 stocks. Time Elapsed: 975.8 seconds
+2023-08-30 16:56:02,012 - INFO - Processed 850 stocks. Time Elapsed: 1039.4 seconds
+2023-08-30 16:57:11,143 - INFO - Processed 900 stocks. Time Elapsed: 1108.5 seconds
+2023-08-30 16:58:16,786 - INFO - Processed 950 stocks. Time Elapsed: 1174.1 seconds
+2023-08-30 16:59:33,478 - INFO - Processed 1000 stocks. Time Elapsed: 1250.8 seconds
+2023-08-30 17:00:35,625 - INFO - Processed 1050 stocks. Time Elapsed: 1313.0 seconds
+2023-08-30 17:02:21,306 - INFO - Processed 1100 stocks. Time Elapsed: 1418.7 seconds
+2023-08-30 17:04:11,987 - INFO - Processed 1150 stocks. Time Elapsed: 1529.3 seconds
+2023-08-30 17:05:29,870 - INFO - Processed 1200 stocks. Time Elapsed: 1607.2 seconds
+2023-08-30 17:06:42,553 - INFO - Processed 1250 stocks. Time Elapsed: 1679.9 seconds
+2023-08-30 17:07:44,248 - INFO - Processed 1300 stocks. Time Elapsed: 1741.6 seconds
+2023-08-30 17:08:50,932 - INFO - Processed 1350 stocks. Time Elapsed: 1808.3 seconds
+2023-08-30 17:10:05,517 - INFO - Processed 1400 stocks. Time Elapsed: 1882.9 seconds
+2023-08-30 17:11:29,265 - INFO - Processed 1450 stocks. Time Elapsed: 1966.6 seconds
+2023-08-30 17:12:54,672 - INFO - Processed 1500 stocks. Time Elapsed: 2052.0 seconds
+2023-08-30 17:14:17,678 - INFO - Processed 1550 stocks. Time Elapsed: 2135.0 seconds
+2023-08-30 17:15:37,370 - INFO - Processed 1600 stocks. Time Elapsed: 2214.7 seconds
+2023-08-30 17:17:06,412 - INFO - Processed 1650 stocks. Time Elapsed: 2303.8 seconds
+2023-08-30 17:18:35,212 - INFO - Processed 1700 stocks. Time Elapsed: 2392.6 seconds
+2023-08-30 17:19:56,626 - INFO - Processed 1750 stocks. Time Elapsed: 2474.0 seconds
+2023-08-30 17:21:12,416 - INFO - Processed 1800 stocks. Time Elapsed: 2549.8 seconds
+2023-08-30 17:22:33,247 - INFO - Processed 1850 stocks. Time Elapsed: 2630.6 seconds
+2023-08-30 17:23:47,361 - INFO - Processed 1900 stocks. Time Elapsed: 2704.7 seconds
+2023-08-30 17:25:00,529 - INFO - Processed 1950 stocks. Time Elapsed: 2777.9 seconds
+2023-08-30 17:26:28,256 - INFO - Processed 2000 stocks. Time Elapsed: 2865.6 seconds
+2023-08-30 17:27:46,167 - INFO - Processed 2050 stocks. Time Elapsed: 2943.5 seconds
+2023-08-30 17:29:02,429 - INFO - Processed 2100 stocks. Time Elapsed: 3019.8 seconds
+2023-08-30 17:30:48,584 - INFO - Processed 2150 stocks. Time Elapsed: 3125.9 seconds
+2023-08-30 17:32:29,612 - INFO - Processed 2200 stocks. Time Elapsed: 3227.0 seconds
+2023-08-30 17:33:52,080 - INFO - Processed 2250 stocks. Time Elapsed: 3309.4 seconds
+2023-08-30 17:35:03,160 - INFO - Processed 2300 stocks. Time Elapsed: 3380.5 seconds
+2023-08-30 17:36:07,975 - INFO - Processed 2350 stocks. Time Elapsed: 3445.3 seconds
+2023-08-30 17:53:22,033 - INFO - Processed 2400 stocks. Time Elapsed: 4479.4 seconds
+2023-08-30 17:54:22,477 - INFO - Processed 2450 stocks. Time Elapsed: 4539.8 seconds
+2023-08-30 18:12:12,092 - INFO - Processed 2500 stocks. Time Elapsed: 5609.4 seconds
+2023-08-30 18:45:58,509 - INFO - Processed 2550 stocks. Time Elapsed: 7635.9 seconds
+2023-08-30 19:02:35,609 - INFO - Processed 2600 stocks. Time Elapsed: 8633.0 seconds
+2023-08-30 19:03:32,432 - INFO - Processed 2650 stocks. Time Elapsed: 8689.8 seconds
+2023-08-30 19:17:18,460 - INFO - Processed 2700 stocks. Time Elapsed: 9515.8 seconds
+2023-08-30 19:22:25,322 - INFO - Processed 2750 stocks. Time Elapsed: 9822.7 seconds
+2023-08-30 19:23:35,060 - INFO - Processed 2800 stocks. Time Elapsed: 9892.4 seconds
+2023-08-30 19:46:16,302 - INFO - Processed 2850 stocks. Time Elapsed: 11253.7 seconds
+2023-08-30 20:02:27,481 - INFO - Processed 2900 stocks. Time Elapsed: 12224.8 seconds
+2023-08-30 20:03:20,986 - INFO - Processed 2950 stocks. Time Elapsed: 12278.3 seconds
+2023-08-30 20:18:20,850 - INFO - Processed 3000 stocks. Time Elapsed: 13178.2 seconds
+2023-08-30 20:19:27,534 - INFO - Processed 3050 stocks. Time Elapsed: 13244.9 seconds
+2023-08-30 20:20:31,788 - INFO - Processed 3100 stocks. Time Elapsed: 13309.1 seconds
+2023-08-30 20:22:01,865 - INFO - Processed 3150 stocks. Time Elapsed: 13399.2 seconds
+2023-08-30 20:22:46,256 - INFO - Scraping process completed.
+2023-08-30 20:22:46,264 - INFO - ====== ALL DONE ======
+2023-09-03 15:00:30,612 - INFO - Starting...
+2023-09-03 15:00:30,612 - ERROR - File not found: /Users/yash/Desktop/Trading/code/trading/msi/data/scrape/20230903_invalid_stocks.txt
+2023-09-03 15:00:31,783 - INFO - Total Stocks Combined: 3171
+2023-09-03 15:00:31,890 - INFO - Invalid Stocks: 0
+2023-09-03 15:00:31,891 - INFO - 0 - 0 = 0
+2023-09-03 15:00:32,217 - INFO - Remaining Stocks to Scrape: 3171
+2023-09-03 15:02:37,452 - INFO - Processed 50 stocks. Time Elapsed: 126.8 seconds
+2023-09-03 15:04:19,971 - INFO - Processed 100 stocks. Time Elapsed: 229.4 seconds
+2023-09-03 15:06:08,539 - INFO - Processed 150 stocks. Time Elapsed: 337.9 seconds
+2023-09-03 15:07:48,141 - INFO - Processed 200 stocks. Time Elapsed: 437.5 seconds
+2023-09-03 15:09:46,408 - INFO - Processed 250 stocks. Time Elapsed: 555.8 seconds
+2023-09-03 15:11:40,083 - INFO - Processed 300 stocks. Time Elapsed: 669.5 seconds
+2023-09-03 15:13:27,231 - INFO - Processed 350 stocks. Time Elapsed: 776.6 seconds
+2023-09-03 15:15:17,384 - INFO - Processed 400 stocks. Time Elapsed: 886.8 seconds
+2023-09-03 15:18:32,078 - INFO - Processed 450 stocks. Time Elapsed: 1081.5 seconds
+2023-09-03 15:20:55,058 - INFO - Processed 500 stocks. Time Elapsed: 1224.4 seconds
+2023-09-03 15:22:49,311 - INFO - Processed 550 stocks. Time Elapsed: 1338.7 seconds
+2023-09-03 15:24:51,506 - INFO - Processed 600 stocks. Time Elapsed: 1460.9 seconds
+2023-09-03 15:26:48,281 - INFO - Processed 650 stocks. Time Elapsed: 1577.7 seconds
+2023-09-03 15:28:44,369 - INFO - Processed 700 stocks. Time Elapsed: 1693.8 seconds
+2023-09-03 15:30:38,828 - INFO - Processed 750 stocks. Time Elapsed: 1808.2 seconds
+2023-09-03 15:39:52,405 - INFO - Processed 800 stocks. Time Elapsed: 2361.8 seconds
+2023-09-03 15:39:58,122 - INFO - Processed 850 stocks. Time Elapsed: 2367.5 seconds
+2023-09-03 15:40:02,941 - INFO - Processed 900 stocks. Time Elapsed: 2372.3 seconds
+2023-09-03 15:40:08,334 - INFO - Processed 950 stocks. Time Elapsed: 2377.7 seconds
+2023-09-03 15:40:13,338 - INFO - Processed 1000 stocks. Time Elapsed: 2382.7 seconds
+2023-09-03 15:40:18,170 - INFO - Processed 1050 stocks. Time Elapsed: 2387.6 seconds
+2023-09-03 15:40:23,242 - INFO - Processed 1100 stocks. Time Elapsed: 2392.6 seconds
+2023-09-03 15:48:50,051 - INFO - Processed 1150 stocks. Time Elapsed: 2899.4 seconds
+2023-09-03 15:48:57,093 - INFO - Processed 1200 stocks. Time Elapsed: 2906.5 seconds
+2023-09-03 15:49:02,262 - INFO - Processed 1250 stocks. Time Elapsed: 2911.6 seconds
+2023-09-03 15:49:07,515 - INFO - Processed 1300 stocks. Time Elapsed: 2916.9 seconds
+2023-09-03 15:49:12,002 - INFO - Processed 1350 stocks. Time Elapsed: 2921.4 seconds
+2023-09-03 15:49:18,163 - INFO - Processed 1400 stocks. Time Elapsed: 2927.6 seconds
+2023-09-03 15:49:22,594 - INFO - Processed 1450 stocks. Time Elapsed: 2932.0 seconds
+2023-09-03 15:49:28,637 - INFO - Processed 1500 stocks. Time Elapsed: 2938.0 seconds
+2023-09-03 15:49:35,105 - INFO - Processed 1550 stocks. Time Elapsed: 2944.5 seconds
+2023-09-03 15:58:02,646 - INFO - Processed 1600 stocks. Time Elapsed: 3452.0 seconds
+2023-09-03 15:58:07,336 - INFO - Processed 1650 stocks. Time Elapsed: 3456.7 seconds
+2023-09-03 15:58:12,620 - INFO - Processed 1700 stocks. Time Elapsed: 3462.0 seconds
+2023-09-03 15:58:17,470 - INFO - Processed 1750 stocks. Time Elapsed: 3466.9 seconds
+2023-09-03 15:58:22,622 - INFO - Processed 1800 stocks. Time Elapsed: 3472.0 seconds
+2023-09-03 15:58:27,175 - INFO - Processed 1850 stocks. Time Elapsed: 3476.6 seconds
+2023-09-03 15:58:32,392 - INFO - Processed 1900 stocks. Time Elapsed: 3481.8 seconds
+2023-09-03 15:58:38,527 - INFO - Processed 1950 stocks. Time Elapsed: 3487.9 seconds
+2023-09-03 16:07:06,768 - INFO - Processed 2000 stocks. Time Elapsed: 3996.2 seconds
+2023-09-03 16:07:11,787 - INFO - Processed 2050 stocks. Time Elapsed: 4001.2 seconds
+2023-09-03 16:07:16,711 - INFO - Processed 2100 stocks. Time Elapsed: 4006.1 seconds
+2023-09-03 16:07:21,700 - INFO - Processed 2150 stocks. Time Elapsed: 4011.1 seconds
+2023-09-03 16:07:26,850 - INFO - Processed 2200 stocks. Time Elapsed: 4016.2 seconds
+2023-09-03 16:07:31,481 - INFO - Processed 2250 stocks. Time Elapsed: 4020.9 seconds
+2023-09-03 16:07:37,426 - INFO - Processed 2300 stocks. Time Elapsed: 4026.8 seconds
+2023-09-03 16:07:42,952 - INFO - Processed 2350 stocks. Time Elapsed: 4032.3 seconds
+2023-09-03 16:16:10,901 - INFO - Processed 2400 stocks. Time Elapsed: 4540.3 seconds
+2023-09-03 16:16:17,855 - INFO - Processed 2450 stocks. Time Elapsed: 4547.2 seconds
+2023-09-03 16:16:23,639 - INFO - Processed 2500 stocks. Time Elapsed: 4553.0 seconds
+2023-09-03 16:16:28,172 - INFO - Processed 2550 stocks. Time Elapsed: 4557.6 seconds
+2023-09-03 16:16:33,319 - INFO - Processed 2600 stocks. Time Elapsed: 4562.7 seconds
+2023-09-03 16:16:38,497 - INFO - Processed 2650 stocks. Time Elapsed: 4567.9 seconds
+2023-09-03 16:16:43,381 - INFO - Processed 2700 stocks. Time Elapsed: 4572.8 seconds
+2023-09-03 16:16:49,388 - INFO - Processed 2750 stocks. Time Elapsed: 4578.8 seconds
+2023-09-03 16:16:54,869 - INFO - Processed 2800 stocks. Time Elapsed: 4584.3 seconds
+2023-09-03 16:25:23,201 - INFO - Processed 2850 stocks. Time Elapsed: 5092.6 seconds
+2023-09-03 16:25:27,847 - INFO - Processed 2900 stocks. Time Elapsed: 5097.2 seconds
+2023-09-03 16:25:33,125 - INFO - Processed 2950 stocks. Time Elapsed: 5102.5 seconds
+2023-09-03 16:25:38,101 - INFO - Processed 3000 stocks. Time Elapsed: 5107.5 seconds
+2023-09-03 16:25:42,757 - INFO - Processed 3050 stocks. Time Elapsed: 5112.1 seconds
+2023-09-03 16:25:47,550 - INFO - Processed 3100 stocks. Time Elapsed: 5116.9 seconds
+2023-09-03 16:25:53,528 - INFO - Processed 3150 stocks. Time Elapsed: 5122.9 seconds
+2023-09-03 16:25:55,680 - INFO - Scraping process completed.
+2023-09-03 16:25:55,686 - INFO - ====== ALL DONE ======
+2023-09-04 17:06:14,983 - INFO - Starting...
+2023-09-04 17:06:14,983 - ERROR - File not found: /Users/yash/Desktop/Trading/code/trading/msi/data/scrape/20230904_invalid_stocks.txt
+2023-09-04 17:06:18,312 - INFO - Total Stocks Combined: 3194
+2023-09-04 17:06:18,422 - INFO - Invalid Stocks: 0
+2023-09-04 17:06:18,422 - INFO - 0 - 0 = 0
+2023-09-04 17:06:18,745 - INFO - Remaining Stocks to Scrape: 3194
+2023-09-04 17:08:34,120 - INFO - Processed 50 stocks. Time Elapsed: 139.1 seconds
+2023-09-04 17:10:51,367 - INFO - Processed 100 stocks. Time Elapsed: 276.4 seconds
+2023-09-04 17:12:16,626 - INFO - Processed 150 stocks. Time Elapsed: 361.6 seconds
+2023-09-04 17:14:00,448 - INFO - Processed 200 stocks. Time Elapsed: 465.5 seconds
+2023-09-04 17:15:52,002 - INFO - Processed 250 stocks. Time Elapsed: 577.0 seconds
+2023-09-04 17:17:30,822 - INFO - Processed 300 stocks. Time Elapsed: 675.8 seconds
+2023-09-04 17:19:09,571 - INFO - Processed 350 stocks. Time Elapsed: 774.6 seconds
+2023-09-04 17:20:48,891 - INFO - Processed 400 stocks. Time Elapsed: 873.9 seconds
+2023-09-04 17:22:19,599 - INFO - Processed 450 stocks. Time Elapsed: 964.6 seconds
+2023-09-04 17:23:59,526 - INFO - Processed 500 stocks. Time Elapsed: 1064.5 seconds
+2023-09-04 17:25:43,077 - INFO - Processed 550 stocks. Time Elapsed: 1168.1 seconds
+2023-09-04 17:27:24,359 - INFO - Processed 600 stocks. Time Elapsed: 1269.4 seconds
+2023-09-04 17:29:23,763 - INFO - Processed 650 stocks. Time Elapsed: 1388.8 seconds
+2023-09-04 17:31:05,552 - INFO - Processed 700 stocks. Time Elapsed: 1490.6 seconds
+2023-09-04 17:32:49,059 - INFO - Processed 750 stocks. Time Elapsed: 1594.1 seconds
+2023-09-04 17:34:31,338 - INFO - Processed 800 stocks. Time Elapsed: 1696.4 seconds
+2023-09-04 17:36:09,967 - INFO - Processed 850 stocks. Time Elapsed: 1795.0 seconds
+2023-09-04 17:37:50,833 - INFO - Processed 900 stocks. Time Elapsed: 1895.9 seconds
+2023-09-04 17:39:20,712 - INFO - Processed 950 stocks. Time Elapsed: 1985.7 seconds
+2023-09-04 17:41:10,422 - INFO - Processed 1000 stocks. Time Elapsed: 2095.4 seconds
+2023-09-04 17:42:38,382 - INFO - Processed 1050 stocks. Time Elapsed: 2183.4 seconds
+2023-09-04 17:44:22,475 - INFO - Processed 1100 stocks. Time Elapsed: 2287.5 seconds
+2023-09-04 17:46:08,772 - INFO - Processed 1150 stocks. Time Elapsed: 2393.8 seconds
+2023-09-04 17:47:44,336 - INFO - Processed 1200 stocks. Time Elapsed: 2489.4 seconds
+2023-09-04 17:49:29,904 - INFO - Processed 1250 stocks. Time Elapsed: 2594.9 seconds
+2023-09-04 17:51:01,052 - INFO - Processed 1300 stocks. Time Elapsed: 2686.1 seconds
+2023-09-04 17:52:36,720 - INFO - Processed 1350 stocks. Time Elapsed: 2781.7 seconds
+2023-09-04 17:54:18,633 - INFO - Processed 1400 stocks. Time Elapsed: 2883.6 seconds
+2023-09-04 17:56:01,537 - INFO - Processed 1450 stocks. Time Elapsed: 2986.6 seconds
+2023-09-04 17:57:47,177 - INFO - Processed 1500 stocks. Time Elapsed: 3092.2 seconds
+2023-09-04 17:59:20,740 - INFO - Processed 1550 stocks. Time Elapsed: 3185.8 seconds
+2023-09-04 18:01:14,980 - INFO - Processed 1600 stocks. Time Elapsed: 3300.0 seconds
+2023-09-04 18:02:55,591 - INFO - Processed 1650 stocks. Time Elapsed: 3400.6 seconds
+2023-09-04 18:04:53,335 - INFO - Processed 1700 stocks. Time Elapsed: 3518.4 seconds
+2023-09-04 18:06:19,951 - INFO - Processed 1750 stocks. Time Elapsed: 3605.0 seconds
+2023-09-04 18:07:53,105 - INFO - Processed 1800 stocks. Time Elapsed: 3698.1 seconds
+2023-09-04 18:25:16,092 - INFO - Processed 1850 stocks. Time Elapsed: 4741.1 seconds
+2023-09-04 18:25:22,426 - INFO - Processed 1900 stocks. Time Elapsed: 4747.4 seconds
+2023-09-04 18:25:27,024 - INFO - Processed 1950 stocks. Time Elapsed: 4752.0 seconds
+2023-09-04 18:25:31,520 - INFO - Processed 2000 stocks. Time Elapsed: 4756.5 seconds
+2023-09-04 18:25:35,987 - INFO - Processed 2050 stocks. Time Elapsed: 4761.0 seconds
+2023-09-04 18:25:41,113 - INFO - Processed 2100 stocks. Time Elapsed: 4766.1 seconds
+2023-09-04 18:25:47,238 - INFO - Processed 2150 stocks. Time Elapsed: 4772.3 seconds
+2023-09-04 18:25:53,737 - INFO - Processed 2200 stocks. Time Elapsed: 4778.8 seconds
+2023-09-04 18:25:59,462 - INFO - Processed 2250 stocks. Time Elapsed: 4784.5 seconds
+2023-09-04 18:34:25,845 - INFO - Processed 2300 stocks. Time Elapsed: 5290.9 seconds
+2023-09-04 18:34:32,139 - INFO - Processed 2350 stocks. Time Elapsed: 5297.2 seconds
+2023-09-04 18:34:36,694 - INFO - Processed 2400 stocks. Time Elapsed: 5301.7 seconds
+2023-09-04 18:34:41,332 - INFO - Processed 2450 stocks. Time Elapsed: 5306.3 seconds
+2023-09-04 18:34:45,852 - INFO - Processed 2500 stocks. Time Elapsed: 5310.9 seconds
+2023-09-04 18:34:51,369 - INFO - Processed 2550 stocks. Time Elapsed: 5316.4 seconds
+2023-09-04 18:34:57,246 - INFO - Processed 2600 stocks. Time Elapsed: 5322.3 seconds
+2023-09-04 18:35:04,084 - INFO - Processed 2650 stocks. Time Elapsed: 5329.1 seconds
+2023-09-04 18:43:32,671 - INFO - Processed 2700 stocks. Time Elapsed: 5837.7 seconds
+2023-09-04 18:43:38,182 - INFO - Processed 2750 stocks. Time Elapsed: 5843.2 seconds
+2023-09-04 18:43:43,607 - INFO - Processed 2800 stocks. Time Elapsed: 5848.6 seconds
+2023-09-04 18:43:49,469 - INFO - Processed 2850 stocks. Time Elapsed: 5854.5 seconds
+2023-09-04 18:43:53,720 - INFO - Processed 2900 stocks. Time Elapsed: 5858.7 seconds
+2023-09-04 18:43:58,364 - INFO - Processed 2950 stocks. Time Elapsed: 5863.4 seconds
+2023-09-04 18:44:03,590 - INFO - Processed 3000 stocks. Time Elapsed: 5868.6 seconds
+2023-09-04 18:44:07,990 - INFO - Processed 3050 stocks. Time Elapsed: 5873.0 seconds
+2023-09-04 18:44:14,339 - INFO - Processed 3100 stocks. Time Elapsed: 5879.4 seconds
+2023-09-04 18:52:40,973 - INFO - Processed 3150 stocks. Time Elapsed: 6386.0 seconds
+2023-09-04 18:52:45,266 - INFO - Scraping process completed.
+2023-09-04 18:52:45,271 - INFO - ====== ALL DONE ======
+2023-09-05 22:59:12,138 - INFO - Starting...
+2023-09-05 22:59:12,139 - ERROR - File not found: /Users/yash/Desktop/Trading/code/trading/msi/data/scrape/20230905_invalid_stocks.txt
+2023-09-05 22:59:15,509 - INFO - Total Stocks Combined: 3171
+2023-09-05 22:59:15,618 - INFO - Invalid Stocks: 0
+2023-09-05 22:59:15,618 - INFO - 0 - 0 = 0
+2023-09-05 22:59:16,334 - INFO - Remaining Stocks to Scrape: 3171
+2023-09-05 23:05:14,783 - INFO - Processed 50 stocks. Time Elapsed: 362.6 seconds
+2023-09-10 09:26:04,037 - INFO - Starting...
+2023-09-10 09:26:04,037 - ERROR - File not found: /Users/yash/Desktop/Trading/code/trading/msi/data/scrape/20230909_invalid_stocks.txt
+2023-09-10 09:26:05,057 - INFO - Total Stocks Combined: 3175
+2023-09-10 09:26:05,147 - INFO - Invalid Stocks: 0
+2023-09-10 09:26:05,147 - INFO - 0 - 0 = 0
+2023-09-10 09:26:05,277 - INFO - Remaining Stocks to Scrape: 3175
+2023-09-10 09:29:12,827 - INFO - Processed 50 stocks. Time Elapsed: 188.8 seconds

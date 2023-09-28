@@ -1,12 +1,12 @@
 import pandas as pd
 import os
-from datetime import datetime, timedelta
+from datetime import datetime
 from finvizfinance.screener.custom import Custom
 import yfinance as yf
 
 from ..common.config import *
 from ..common.io import *
-from ..common.tradingview import *
+from ..common.tv_utils import *
 
 
 class finviz:
@@ -47,12 +47,11 @@ filters_dict2 = {
     "Country": finviz.country_usa,
 }
 
-if not os.path.isdir(today_wl):
-    os.mkdir(today_wl)
-os.chdir(today_wl)
+
+change_dir(today_wl)
 
 outfile = today_blank + "_EP_US.txt"
-if outfile in glob("*US*"):
+if check_file(outfile):
     print("File already exists")
     exit()
 
@@ -89,4 +88,4 @@ df_final = df_final[
 
 s1 = set(df_final[df_final.columns[0]])
 
-set_to_tv(s1, outfile)
+set_to_tv_us(s1, outfile)

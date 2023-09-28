@@ -2,11 +2,11 @@
 # #Creates backwatchlist set for watchlists from last friday to most recent thursday => watchlists for all trading days for last trading week
 
 # %%
-from datetime import date, timedelta
+from datetime import timedelta
 import os
 from glob import glob
 from ..common.config import *
-from ..common.tradingview import *
+from ..common.tv_utils import *
 
 # import utils.tradingview as tv
 
@@ -54,4 +54,4 @@ latest_thursday = latest_thursday.strftime("%Y%m%d")
 outfile = f"{last_friday}_{latest_thursday}_Q_BWL_IND.txt"
 
 # %%
-set_to_tv(ticker_set, outfile)
+set_to_tv_ind(s=ticker_set, outfile=outfile, print_=True, filter_bands=False)
