@@ -1,8 +1,14 @@
 import pandas as pd
+
 from ..ci.db import *
 from ..ci.ci_utils import *
 from ..common.config import *
 from ..common.io import *
+
+# from trading.ci.db import *
+# from trading.ci.ci_utils import *
+# from trading.common.config import *
+# from trading.common.io import *
 import sys
 import warnings
 
@@ -38,13 +44,13 @@ def process_stocks(file_path, adr_threshold=3.5, n=100):
     return df_filtered, superset
 
 
-if check_file(OUTFILE, today_wl):
-    print(f"{OUTFILE} already present. Exiting")
-    sys.exit()
-df_filtered, superset = process_stocks(ci_top_gainers)
+if __name__ == "__main__":
+    if check_file(OUTFILE, today_wl):
+        print(f"{OUTFILE} already present. Exiting")
+        sys.exit()
+    df_filtered, superset = process_stocks(ci_top_gainers)
 
-
-change_dir(today_wl)
-df_filtered.to_csv(f"{today_blank}_mom_ind.csv")
-os.remove("Top Gainers.csv")
-set_to_tv_ind(superset, OUTFILE)
+    change_dir(today_wl)
+    df_filtered.to_csv(f"{today_blank}_mom_ind.csv")
+    os.remove("Top Gainers.csv")
+    set_to_tv_ind(superset, OUTFILE)
