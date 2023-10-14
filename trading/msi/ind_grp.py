@@ -37,9 +37,16 @@ def get_ind_grp_ranks():
     original_filename = os.path.join(msi_ind_grp, "industryGroupList.csv")
     os.rename(original_filename, outfile)
     df = pd.read_csv(outfile, index_col=False)
-    df = df[df["NumberOfStocks"] > 1]
 
+    # Drop rows with any NaN values
+    df.replace("N.A", np.nan, inplace=True)
+    df.dropna(inplace=True)
+
+    # Filter for groups with only 0 or 1 stocks
+    df = df[df["NumberOfStocks"] > 1]
+    # Filter for Group MCap < 500 Cr
     df["MarketCapital"] = df["MarketCapital"].apply(get_numerical_value)
+
     df = df[df["MarketCapital"] > 500]
 
     df["Rank -1W"] = pd.to_numeric(

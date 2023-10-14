@@ -20,7 +20,6 @@ def request_url(url):
 
 def get_chromedriver2(download_dir, headless=True):
     download_dir = os.path.abspath(download_dir)
-    print(download_dir)
     if not os.path.exists(download_dir):
         os.makedirs(download_dir)
 
@@ -28,9 +27,7 @@ def get_chromedriver2(download_dir, headless=True):
 
     if headless:
         chrome_options.add_argument("--headless")
-        chrome_options.add_argument(
-            "--window-size=1920x1080"
-        )  # Set a default window size (optional)
+        chrome_options.add_argument("--window-size=1920x1080")
 
     chrome_options.add_experimental_option(
         "prefs",
@@ -44,6 +41,35 @@ def get_chromedriver2(download_dir, headless=True):
 
     driver = webdriver.Chrome(options=chrome_options)
     return driver
+
+
+# OLD
+# def get_chromedriver2(download_dir, headless=True):
+#     download_dir = os.path.abspath(download_dir)
+#     print(download_dir)
+#     if not os.path.exists(download_dir):
+#         os.makedirs(download_dir)
+
+#     chrome_options = webdriver.ChromeOptions()
+
+#     if headless:
+#         chrome_options.add_argument("--headless")
+#         chrome_options.add_argument(
+#             "--window-size=1920x1080"
+#         )  # Set a default window size (optional)
+
+#     chrome_options.add_experimental_option(
+#         "prefs",
+#         {
+#             "download.default_directory": download_dir,
+#             "download.prompt_for_download": False,
+#             "download.directory_upgrade": True,
+#             "plugins.always_open_pdf_externally": True,
+#         },
+#     )
+
+#     driver = webdriver.Chrome(options=chrome_options)
+#     return driver
 
 
 def get_chromedriver(

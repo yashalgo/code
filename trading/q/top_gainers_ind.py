@@ -12,7 +12,7 @@ OUTFILE = f"{today_blank}_mom_ind.txt"
 
 def process_stocks(file_path, adr_threshold=3.5, n=100):
     # 1. Reading the CSV file
-    if not get_top_gainers():
+    if not get_ci_db():
         print("Error getting top gainers")
         return
     print(file_path)

@@ -8,16 +8,17 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import time
 
-OUTFILE = "Top Gainers.csv"
-DASHBOARD_URL = "https://chartink.com/dashboard/158123?open-widget=1940413"
 
-
-def get_top_gainers():
-    if check_file(OUTFILE, today_wl):
+def get_ci_db(
+    OUTFILE="Top Gainers.csv",
+    DASHBOARD_URL="https://chartink.com/dashboard/158123?open-widget=1940413",
+    path_=today_wl,
+):
+    if check_file(OUTFILE, path_):
         print(f"File {OUTFILE} already present")
         return True
 
-    driver = get_chromedriver2(today_wl)
+    driver = get_chromedriver2(path_)
 
     # Load the local HTML page
     driver.get(DASHBOARD_URL)
@@ -29,7 +30,6 @@ def get_top_gainers():
             EC.presence_of_element_located((By.XPATH, xpath))
         )
 
-        # Use JavaScript to make the element visible
         time.sleep(10)
         driver.execute_script("arguments[0].style.display = 'block';", download_div)
 
@@ -37,7 +37,7 @@ def get_top_gainers():
         download_button = driver.find_element(By.XPATH, xpath + "/a")
         driver.execute_script("arguments[0].click();", download_button)
 
-        print("Successful!")
+        print(f"Fetch {OUTFILE} Successful!")
         time.sleep(1)
         driver.quit()
         return True

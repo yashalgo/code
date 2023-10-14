@@ -11,6 +11,7 @@ today_dash = today.strftime("%Y-%m-%d")
 
 # commom
 trading_ = Path("/Users/yash/Desktop/Trading")
+
 code = trading_ / "code/trading"
 downloads = Path("/Users/yash/Downloads")
 
@@ -129,7 +130,7 @@ tijori_mm_url = "https://www.tijorifinance.com/in/markets"
 # top_gainers_6m = "https://chartink.com/screener/top-gainers-3m-2"
 # top_gainers_12m = "https://chartink.com/screener/top-gainers-12m"
 # hv = "https://chartink.com/screener/hvq-3"
-# mom_url = "https://chartink.com/screener/copy-momentum-stocks-initial-scanner-156"
+mom_url = "https://chartink.com/screener/copy-momentum-stocks-initial-scanner-156"
 # mom_url = "https://chartink.com/screener/mark-minervini-trend-template-simplified"
 
 bse_bhav_copy_url = "https://www.bseindia.com/download/BhavCopy/Equity/EQ280723_CSV.ZIP"
@@ -220,3 +221,15 @@ screener_data = screener / "data"
 liquid_dir = screener_data / "liquid"
 # CHROMEDRIVER
 chromedriver_path = trading_ / "code/drivers/chromedriver-mac-arm64/chromedriver"
+
+# mbm
+mbm = code / "mbm"
+mbm_data = mbm / "data"
+mbm_files = mbm_data / "files"
+mbm_db = mbm_data / "db"
+
+
+# GITHUB NSE BREADTH REPO
+nse_breadth = trading_ / "code/seed_yashalgo_nse_breadth"
+nse_breadth_data = nse_breadth / "data"
+nse_breadth_json = nse_breadth / "symbol_info/seed_yashalgo_nse_breadth.json"

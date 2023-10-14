@@ -1,3 +1,8 @@
 trading/**/data/*
 credentials/*
 trading/usa_data/*
+trading/exch/__pycache__/exch_utils.cpython-311.pyc
+trading/common/__pycache__/tv_utils.cpython-311.pyc
+trading/twitter/__pycache__/tji_tweet.cpython-311.pyc
+trading/twitter/__pycache__/*.*
+*.pyc

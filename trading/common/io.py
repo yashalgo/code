@@ -98,7 +98,9 @@ def delete_files_with_string_recursive(target_string, folder_path=exchange_data)
         ]
 
         for file in files_to_delete:
-            os.remove(os.path.join(dirpath, file))
+            fname = os.path.join(dirpath, file)
+            print(fname)
+            os.remove(fname)
             deleted_files_count += 1
 
     print(f"Deleted {deleted_files_count} files.")

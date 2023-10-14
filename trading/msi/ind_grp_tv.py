@@ -1,7 +1,3 @@
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-
 import pandas as pd
 from ..common.config import *
 from ..common.io import *
@@ -9,8 +5,6 @@ from ..common.tv_utils import *
 from ..common.chrome_utils import *
 from ..exch.exch_utils import *
 import os
-import sys
-from glob import glob
 
 if __name__ == "__main__":
     # check if WL already present
